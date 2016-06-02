@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="store">
+	<head>
+		<link rel="stylesheet" type="text/css" href="../libs/bootstrap-3.3.6-dist/css/bootstrap.min.css"/>
+		<title>Test Ramp up</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+	<body ng-controller="StoreController as store"> 
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="product in store.products">
+			<h3 ng-hide="product.soldOut">
+				{{product.name}}
+				<em class="pull-right">{{product.price | currency}}</em>
+				<img ng-src="{{product.images[0].full}}" />
+				<!--em>{{product.description}}</em>
+				<button ng-show="product.canPurchase">Add to Cart</button-->
+			</h3>
+			<section ng-controller="PanelController as panel">
+				<ul class="nav nav-pills">
+					<li ng-class="{ active:panel.isSelected(1)}">
+						<a href ng-click="panel.selectTab(1)">Description</a>
+					</li>
+					<li ng-class="{ active:panel.isSelected(2)}">
+						<a href ng-click="panel.selectTab(2)">Specifications</a>
+					</li>
+					<li ng-class="{ active:panel.isSelected(3)}">
+						<a href ng-click="panel.selectTab(3)">Reviews</a>
+					</li>
+				</ul>
+				<div class="panel" ng-show="panel.isSelected(1)">
+					<h4>Description</h4>
+					<p>{{product.description}}</p>
+				</div>
+				<div class="panel" ng-show="panel.isSelected(2)">
+					<h4>Specifications</h4>
+					<p>Price: {{product.price}}</p>
+					<p>Available: {{product.canPurchase}}</p>
+				</div>
+				<div class="panel" ng-show="panel.isSelected(3)">
+					<h4>Reviews</h4>
+					<p>Here goes reviews</p>
+				</div>
+		</section>
+		</li>
+	</ul>
+	<script type="text/javascript" src="../libs/angular-1.5.6/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	</body>
+</html>
