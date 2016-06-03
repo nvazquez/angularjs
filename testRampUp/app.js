@@ -17,6 +17,14 @@
 		};
 	});
 	
+	app.controller('ReviewController', function(){
+		this.review = {};
+		this.addReview = function(product){
+			product.reviews.push(this.review);
+			this.review = {};
+		}
+	});
+	
 	var gems = [
 	{
 		name : 'Dodecahedron',
@@ -28,6 +36,18 @@
 			{
 				full : 'images/dodecahedron-01-full.jpg',
 				thumb : 'images/dodecahedron-01-thumb.jpg'
+			}
+		],
+		reviews : [
+			{
+				stars : 3,
+				body : 'Review lorem ipsum coso',
+				author : 'nicovazquez90@gmail.com'
+			},
+			{
+				stars : 4,
+				body : 'Lorem ipsum bla bla bla',
+				author : 'reviewer@gmail.com'
 			}
 		]
 	},
@@ -41,6 +61,18 @@
 			{
 				full : 'images/pentagonal-01-full.jpg',
 				thumb : 'images/pentagonal-01-thumb.jpg'
+			}
+		],
+		reviews : [
+			{
+				stars : 2,
+				body : 'Bad review lorem ipsum',
+				author : 'badreviewer@gmail.com'
+			},
+			{
+				stars : 1,
+				body : 'Horrible review bla bla',
+				author : 'horriblerev@gmail.com'
 			}
 		]
 	}]
